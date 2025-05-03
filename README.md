@@ -1,27 +1,34 @@
-# L1_featuresN File Processing
+# L1_skeletons File Processing
 
-This document describes the processing of the `L1_featuresN.hdf5` file using Python and the `h5py` and `pandas` libraries. The primary goal was to extract relevant data from the file and convert it into a more accessible CSV format. The `L1_featuresN.hdf5` file was obtained by using the Tierpsy Tracker.
+This document describes the processing of the `L1_skeletons.hdf5` file using Python and the `h5py`, `pandas`, and `numpy` libraries. The primary goal was to extract relevant data from the file and convert it into a more accessible CSV format. The `L1_skeletons.hdf5` file was obtained by using the Tierpsy Tracker.
 
 **Key Steps:**
 
-1.  **File Inspection:** The `L1_featuresN.hdf5` file was inspected to identify its structure and contents. This involved examining the groups and datasets within the file.
+1.  **File Inspection:** The `L1_skeletons.hdf5` file was inspected to identify its structure and contents. This involved examining the groups and datasets within the file.
 2.  **Dataset Extraction:**
     * The following datasets were extracted and converted to individual CSV files:
         * `blob_features`
-        * `features_stats`
-        * `timeseries_data`
+        * `contour_area`
+        * `contour_side1`
+        * `contour_side1_length`
+        * `contour_side2`
+        * `contour_side2_length`
+        * `contour_width`
+        * `plate_worms`
+        * `skeleton`
+        * `skeleton_length`
         * `trajectories_data`
-    * The data within the `coordinates` group was extracted and converted to a CSV file.  This involved reshaping the 3D arrays within the group (specifically, 'dorsal_contours', 'skeletons', and 'ventral_contours') to a 2D format for compatibility with CSV.
-    * The attributes within the `provenance_tracking` group were extracted and converted to a single-row CSV file.
+        * `width_midbody`
+    * For the `contour_side1`, `contour_side2`, and `skeleton` datasets, which were originally 3D arrays, the data was reshaped into a 2D format to ensure compatibility with the CSV format.
 
-3.  **Output Format:** All extracted data was saved as CSV files, with column headers derived from the dataset structure (where applicable).  For the 'coordinates' group, the reshaped data was saved with new column names (e.g., `dorsal_contours_0`, `dorsal_contours_1`, etc.).  For the 'provenance_tracking' group, the attributes were saved as column headers in a single-row CSV.
+3.  **Output Format:** All extracted data was saved as CSV files, with column headers derived from the dataset structure.  For the `contour_side1`, `contour_side2`, and `skeleton` datasets, the reshaped data was saved with new column names to reflect the new 2D structure.
 
 **Libraries Used:**
 
 * `h5py`: For reading and navigating the HDF5 file structure.
 * `pandas`: For creating and exporting DataFrames to CSV files.
-* `numpy`: For reshaping arrays during the extraction of the 'coordinates' group.
+* `numpy`: For reshaping arrays during the extraction of the `contour_side1`, `contour_side2`, and `skeleton` datasets.
 
 **Purpose:**
 
-The processing steps outlined here were performed to make the data contained within the `L1_featuresN.hdf5` file more readily available for analysis. The conversion to CSV format allows for easier manipulation and exploration of the data using standard data analysis tools.  The reshaping of the 'coordinates' data and the extraction of 'provenance_tracking' attributes were necessary to handle the specific structure of this HDF5 file.
+The processing steps outlined here were performed to make the data contained within the `L1_skeletons.hdf5` file more readily available for analysis. The conversion to CSV format allows for easier manipulation and exploration of the data using standard data analysis tools.  The reshaping of the `contour_side1`, `contour_side2`, and `skeleton` datasets was necessary to handle their original 3D structure and make them suitable for CSV export.
