@@ -5,7 +5,7 @@ This document describes the processing of the `L1_skeletons.hdf5` file using Pyt
 **Key Steps:**
 
 1.  **File Inspection:** The `L1_skeletons.hdf5` file was inspected to identify its structure and contents. This involved examining the groups and datasets within the file.
-2.  **Dataset Extraction:**
+**2. Dataset Extraction:**
     * The following top-level datasets were extracted and converted to individual CSV files:
         * `blob_features`
         * `contour_area`
@@ -19,11 +19,13 @@ This document describes the processing of the `L1_skeletons.hdf5` file using Pyt
         * `skeleton_length`
         * `trajectories_data`
         * `width_midbody`
+        * `time`
+        * `raw`
     * Datasets within groups were also extracted:
-        * `intensity_analysis/switched_head_tail`
-        * `timestamp/raw`
-        * `timestamp/time`
-    * Scalar datasets within the `provenance_tracking` group were extracted into a single CSV file.
+        * `intensity_analysis/switched_head_tail` (saved as `intensity_analysis_switched_head_tail.csv`)
+        * `timestamp/raw` (saved as `timestamp_raw.csv`)
+        * `timestamp/time` (saved as `timestamp_time.csv`)
+    * Scalar datasets within the `provenance_tracking` group were extracted into a single CSV file named `provenance_tracking_scalars.csv`.
 
 3.  **Output Format:** All extracted data was saved as CSV files. For datasets that were originally multi-dimensional (e.g., `contour_side1`, `contour_side2`, `skeleton`), the data was reshaped into a 2D format before saving. Datasets extracted from groups had their filenames adapted to reflect their group structure (e.g., `intensity_analysis_switched_head_tail.csv`). Scalar data from `provenance_tracking` was saved in a `provenance_tracking_scalars.csv` file with 'name' and 'value' columns.
 
