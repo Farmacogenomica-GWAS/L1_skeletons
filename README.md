@@ -39,6 +39,3 @@ This document describes the processing of the `L1_skeletons.hdf5` file using Pyt
 
 The processing steps outlined here were performed to make the data contained within the `L1_skeletons.hdf5` file more readily available for analysis. The conversion to CSV format allows for easier manipulation and exploration of the data using standard data analysis tools. The script handles both top-level datasets and those nested within groups, as well as scalar metadata, providing a comprehensive extraction of the file's contents. Finally, visualizing the first few rows of each output CSV helps in quickly understanding the structure and content of the extracted data.
 
-**Purpose:**
-
-The processing steps outlined here were performed to make the data contained within the `L1_skeletons.hdf5` file more readily available for analysis. The conversion to CSV format allows for easier manipulation and exploration of the data using standard data analysis tools. The initial processing focused on extracting top-level datasets, while the subsequent processing targeted datasets specifically within groups and scalar data from the `provenance_tracking` group.
